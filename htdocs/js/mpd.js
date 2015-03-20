@@ -98,10 +98,10 @@ $(document).ready(function(){
     $("#volumeslider").on('slider.newValue', function(evt,data){
         socket.send("MPD_API_SET_VOLUME,"+data.val);
     });
-    $("#localvolumeslider").slider(0);
+    /*$("#localvolumeslider").slider(0);
     $("#localvolumeslider").on('slider.newValue', function(evt,data){
         $("#player").volume=data.val/100;
-    });
+    });*/
     $('#progressbar').slider(0);
     $("#progressbar").on('slider.newValue', function(evt,data){
         if(current_song && current_song.currentSongId >= 0) {
@@ -310,7 +310,7 @@ function webSocketConnect() {
                     var elapsed_seconds = obj.data.elapsedTime - elapsed_minutes * 60;
 
                     $('#volumeslider').slider(obj.data.volume);
-                    $('#localvolumeslider').slider(document.getElementById("player").volume*100);
+                    //$('#localvolumeslider').slider(document.getElementById("player").volume*100);
                     var progress = Math.floor(100*obj.data.elapsedTime/obj.data.totalTime);
                     $('#progressbar').slider(progress);
 
@@ -494,7 +494,7 @@ function clickLocalPlay() {
     var player = document.getElementById('player');
     player.src='http://192.168.0.41:6080/mpd.ogg';
     player.play();
-    $("#localvolumeslider").slider(player.volume*100);
+    //$("#localvolumeslider").slider(player.volume*100);
 }
 
 function clickLocalStop() {
