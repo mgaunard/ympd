@@ -492,7 +492,7 @@ function clickPlay() {
 
 function clickLocalPlay() {
     var player = document.getElementById('player');
-    player.src='http://mpd:8000/mpd.ogg';
+    player.src='http://192.168.0.41:6080/mpd.ogg';
     player.play();
     $("#localvolumeslider").slider(player.volume*100);
 }
